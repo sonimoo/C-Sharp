@@ -17,18 +17,18 @@ void second()
 }
 second();
 
-void sed()
+void third()
 {
     string a = "a";
     string b = a;
     a = "b";
     Console.WriteLine(a);
 }  
-sed(); 
+third(); 
 
-void fouth()
+void fourth()
 {
     //string a = 5; The build failed. Fix the build errors and run again. :)
 }
   
-fouth();
+fourth();
