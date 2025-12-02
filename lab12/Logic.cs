@@ -90,19 +90,6 @@ class Library
     }
 }
 
-class LibraryFilter
-{
-    public BookState State;
-    
-    public string? NameContains;
-    public string? NameNotContains;
-    
-    public string? Author;
-    
-    public string? NameStartsWith;
-}
-
-
 class Book
 {
     public required string name;
