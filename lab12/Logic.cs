@@ -56,9 +56,30 @@ class Library
     }
 }
 
+class LibraryFilter
+{
+    public BookState State;
+    
+    public string? NameContains;
+    public string? NameNotContains;
+    
+    public string? Author;
+    
+    public string? NameStartsWith;
+}
+
+
 class Book
 {
     public required string name;
     public required int year;
     public required bool available;
+    public required string author;
+}
+
+enum BookState
+{
+    Taken,
+    Free,
+    Any
 }
