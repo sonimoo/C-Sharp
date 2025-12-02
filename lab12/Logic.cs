@@ -1,32 +1,38 @@
 class Library
 {
-    private Book[] books;
+    private List<Book> freeBooks;
+    private List<Book> takenBooks;
 
     public Library(Book[] books)
     {
-        this.books = books;
+        freeBooks = new List<Book>(books);
+        takenBooks = new List<Book>();
     }
     
     public void takeBook(string name)
     {
-        foreach (Book book in books)
+        foreach (Book book in freeBooks)
         {
-            if (book.name != name)
-                continue;
-            if (book.available == true)
+            if (book.name == name)
             {
+                freeBooks.Remove(book);
+                takenBooks.Add(book);
                 book.available = false;
                 return;
             }
         }
+
+        Console.WriteLine("Книги то нет -_-");
     }
     
     public void giveBook(string name)
     {
-        foreach (Book book in books)
+        foreach (Book book in takenBooks)
         {
             if (book.name == name)
             {
+                takenBooks.Remove(book);
+                freeBooks.Add(book);
                 book.available = true;
                 return;
             } 
@@ -37,9 +43,15 @@ class Library
 
     public void showAllBooks()
     {
-        foreach (Book book in books)
+        Console.WriteLine("Свободные книги: ");
+        foreach (Book book in freeBooks)
         {
-            Console.WriteLine($"{book.name}, {book.year}, доступна: {book.available}");
+            Console.WriteLine($"{book.name}, {book.year}, доступна : {book.available} хотя зачем она ж в списке свободных");
+        }
+        Console.WriteLine("Не свободные книги: ");
+        foreach (Book book in takenBooks)
+        {
+            Console.WriteLine($"{book.name}, {book.year}, доступна : {book.available} хотя зачем");
         }
     }
 }
