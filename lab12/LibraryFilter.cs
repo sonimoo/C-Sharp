@@ -16,7 +16,6 @@ sealed class LibraryFilter
             Debug.Assert(value == BookState.Any ||
                          value == BookState.Free ||
                          value == BookState.Taken);
-
             _state = value;
         }
     }

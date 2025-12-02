@@ -29,11 +29,53 @@
             }
         );
 
-        library.takeBook("Анна Каренина");
+    library.takeBook("Анна Каренина");
 
-        library.showAllBooks();
+    library.showAllBooks();
 
-        library.giveBook("абракадабра");
-        library.giveBook("Анна Каренина");
+    library.giveBook("абракадабра");
+    library.giveBook("Анна Каренина");
+
+    var filter = ReadLibraryFilter();
+
+    Console.WriteLine("Filter created!");
+    Console.WriteLine($"Status = {filter.State}");
+    Console.WriteLine($"NameContains = {filter.NameContains ?? "(null)"}");
+
     }
+
+    static LibraryFilter ReadLibraryFilter()
+    {
+        var filter = new LibraryFilter();
+        var input = new InputLibraryFilter(filter);
+
+        // 1) Status
+        while (true)
+        {
+            Console.Write("Status (Free, Taken, Any): ");
+            string? str = Console.ReadLine();
+
+            if (!input.Status(str))
+            {
+                Console.WriteLine("Invalid input");
+                continue;
+            }
+            break;
+        }
+
+        Console.Write("Name contains: ");
+        input.NameContains(Console.ReadLine());
+
+        Console.Write("Name NOT contains: ");
+        input.NameNotContains(Console.ReadLine());
+
+        Console.Write("Author: ");
+        input.Author(Console.ReadLine());
+
+        Console.Write("Name starts with: ");
+        input.NameStartsWith(Console.ReadLine());
+
+        return filter;
+    }
+
 }
