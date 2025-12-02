@@ -54,6 +54,40 @@ class Library
             Console.WriteLine($"{book.name}, {book.year}, доступна : {book.available} хотя зачем");
         }
     }
+
+    public void FilteredBooks(LibraryFilter filter)
+    {
+        List<Book> allBooks = new List<Book>();
+        allBooks.AddRange(freeBooks);
+        allBooks.AddRange(takenBooks);
+
+        foreach (Book book in allBooks)
+        {
+            // 1) Проверяем состояние
+            if (filter.State == BookState.Free && !book.available)
+                continue; 
+            if (filter.State == BookState.Taken && book.available)
+                continue; 
+
+            // 2) Проверяем содержание строки в имени
+            if (filter.NameContains != null && !book.name.Contains(filter.NameContains))
+                continue;
+
+            // 3) Проверяем что строки нет в имени
+            if (filter.NameNotContains != null && book.name.Contains(filter.NameNotContains))
+                continue;
+
+            // 4) Проверяем автора
+            if (filter.Author != null && book.author != filter.Author)
+                continue;
+
+            // 5) Проверяем начало имени
+            if (filter.NameStartsWith != null && !book.name.StartsWith(filter.NameStartsWith))
+                continue;
+
+            Console.WriteLine($"{book.name}, {book.author}, {book.year}, доступна: {book.available}");
+        }
+    }
 }
 
 class LibraryFilter

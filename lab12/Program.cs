@@ -10,18 +10,21 @@
                     name = "Анна Каренина",
                     year = 1876,
                     available = true,
+                    author = "Лев Толстой"
                 },
                 new Book()
                 {
                     name = "Преступление и наказание",
                     year = 1900,
                     available = true,
+                    author = "Фёдор Достоевский"
                 },
                 new Book()
                 {
                     name = "бла бла бла",
                     year = 1000,
                     available = true,
+                    author = "я (в прошлой жизни)"
                 }
             }
         );
