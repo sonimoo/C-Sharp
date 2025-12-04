@@ -25,6 +25,13 @@
                     year = 1000,
                     available = true,
                     author = "я (в прошлой жизни)"
+                },
+                new Book()
+                {
+                    name = "The Great Gatsby",
+                    year = 1925,
+                    available = false,
+                    author = "Fitzgerald"
                 }
             }
         );
@@ -41,6 +48,8 @@
     Console.WriteLine("Filter created!");
     Console.WriteLine($"Status = {filter.State}");
     Console.WriteLine($"NameContains = {filter.NameContains ?? "(null)"}");
+
+    library.FilteredBooks(filter);
 
     }
 

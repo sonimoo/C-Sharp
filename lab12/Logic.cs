@@ -5,10 +5,18 @@ class Library
 
     public Library(Book[] books)
     {
-        freeBooks = new List<Book>(books);
+        freeBooks = new List<Book>();
         takenBooks = new List<Book>();
+
+        foreach (var book in books)
+        {
+            if (book.available)
+                freeBooks.Add(book);
+            else
+                takenBooks.Add(book);
+        }
     }
-    
+
     public void takeBook(string name)
     {
         foreach (Book book in freeBooks)

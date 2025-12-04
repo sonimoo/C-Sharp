@@ -1,0 +1,5 @@
+![while true](img/image.png)
+![while i <](img/image-1.png)
+![alt text](img/image-2.png)
+![for](img/image-3.png)
+![foreach](img/image-4.png)
